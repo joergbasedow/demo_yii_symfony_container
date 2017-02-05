@@ -1,0 +1,5 @@
+php_webserver_daemon: nginx
+
+php_packages:
+    - php5-fpm
+    - php5-cli

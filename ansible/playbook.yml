@@ -1,0 +1,13 @@
+- name: provision demo VM
+  hosts: all
+  become: true
+  become_method: sudo
+
+  vars_files:
+    - vars/nginx.yml
+    - vars/php.yml
+
+  roles:
+    - { role: geerlingguy.nginx }
+    - { role: geerlingguy.php }
+    - { role: geerlingguy.composer }
