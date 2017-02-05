@@ -1,0 +1,9 @@
+{
+  "name": "joergbasedow/demo_yii_symfony_container",
+  "description": "",
+  "license": "MIT",
+  "require": {
+    "php": ">=5.6.0",
+    "yiisoft/yii": "1.1.15"
+  }
+}
