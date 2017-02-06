@@ -1,7 +1,8 @@
 <?php
 
+use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
-use Symfony\Component\DependencyInjection\Reference;
+use Symfony\Component\DependencyInjection\Loader\YamlFileLoader;
 
 class YiiContainerComponent extends ContainerBuilder implements IApplicationComponent
 {
@@ -21,15 +22,9 @@ class YiiContainerComponent extends ContainerBuilder implements IApplicationComp
 
     public function init()
     {
-        foreach ($this->configuration as $aServiceId => $aServiceConfiguration) {
-            $definition = $this->register($aServiceId, $aServiceConfiguration['class']);
-
-            foreach ($aServiceConfiguration['arguments'] as $anArgument) {
-                if (strpos($anArgument, '@') === 0) {
-                    $anArgument = new Reference(substr($anArgument, 1));
-                }
-                $definition->addArgument($anArgument);
-            }
+        $loader = new YamlFileLoader($this, new FileLocator(Yii::app()->basePath.'/config'));
+        foreach ($this->configuration['files'] as $aFile) {
+            $loader->load($aFile.'.yml');
         }
 
         $this->isInitialized = true;

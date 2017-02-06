@@ -21,14 +21,7 @@ Yii::$classMap = $loader->getClassMap();
 $app = Yii::createWebApplication($config);
 $container = new YiiContainerComponent();
 $container->setConfiguration([
-    'userRepository' => [
-        'class' => 'UserRepository',
-        'arguments' => ['@db'],
-    ],
-    'userService' => [
-        'class' => 'UserService',
-        'arguments' => ['/data/users'],
-    ],
+    'files' => ['services'],
 ]);
 
 // set synthetic services

@@ -5,6 +5,8 @@
   "require": {
     "php": ">=5.6.0",
     "yiisoft/yii": "1.1.15",
-    "symfony/dependency-injection": "2.*"
+    "symfony/dependency-injection": "^3.2",
+    "symfony/config": "^3.2",
+    "symfony/yaml": "^3.2"
   }
 }
