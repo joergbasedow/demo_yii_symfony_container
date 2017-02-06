@@ -26,6 +26,9 @@ class YiiContainerComponent extends ContainerBuilder implements IApplicationComp
         foreach ($this->configuration['files'] as $aFile) {
             $loader->load($aFile.'.yml');
         }
+        foreach (array_keys(Yii::app()->getModules()) as $aModuleName) {
+            $this->getModule($aModuleName)->loadServices($this);
+        }
 
         $this->isInitialized = true;
     }
@@ -36,5 +39,15 @@ class YiiContainerComponent extends ContainerBuilder implements IApplicationComp
     public function getIsInitialized()
     {
         return $this->isInitialized;
+    }
+
+    /**
+     * @param string $name
+     *
+     * @return BaseModule|CModule
+     */
+    private function getModule($name)
+    {
+        return Yii::app()->getModule($name);
     }
 }

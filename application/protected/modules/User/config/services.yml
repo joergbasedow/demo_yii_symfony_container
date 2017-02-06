@@ -1,0 +1,8 @@
+services:
+    userRepository:
+        class: UserRepository
+        arguments: ["@db"]
+
+    userService:
+        class: UserService
+        arguments: ["%baseDataDirectory%/user"]

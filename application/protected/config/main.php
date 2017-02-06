@@ -19,6 +19,7 @@ return array(
     ),
 
     'modules'=>array(
+        'User' => ['class' => 'application.modules.BaseModule'],
         // uncomment the following to enable the Gii tool
         /*
         'gii'=>array(
