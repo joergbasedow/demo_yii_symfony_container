@@ -19,13 +19,8 @@ $loader = require(__DIR__.'/../vendor/autoload.php');
 Yii::$classMap = $loader->getClassMap();
 
 $app = Yii::createWebApplication($config);
-$container = new YiiContainerComponent();
-$container->setConfiguration([
+$container = (new CachedContainerLoader([
     'files' => ['services'],
-]);
-
-// set synthetic services
-$container->set('db', Yii::app()->db);
-
+]))->getContainer();
 $app->setComponent('container', $container);
 $app->run();

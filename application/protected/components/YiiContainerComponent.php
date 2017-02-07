@@ -41,6 +41,11 @@ class YiiContainerComponent extends ContainerBuilder implements IApplicationComp
         return $this->isInitialized;
     }
 
+    public function setIsInitialized()
+    {
+        $this->isInitialized = true;
+    }
+
     /**
      * @param string $name
      *
